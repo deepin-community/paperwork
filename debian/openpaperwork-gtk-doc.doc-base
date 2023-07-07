@@ -1,0 +1,9 @@
+Document: openpaperwork-gtk-doc
+Title: Documentation for openpaperwork-gtk
+Author: Jerome Flesch
+Abstract: Developer documentation
+Section: Data Management
+
+Format: html
+Index: /usr/share/doc/openpaperwork-gtk/index.html
+Files: /usr/share/doc/openpaperwork-gtk/*.html

@@ -1,15 +1,272 @@
-Source: template-repository
-Section: unknown
+Source: paperwork
+Section: python
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Maintainer: Thomas Perret <thomas.perret@phyx.fr>
+Build-Depends:
+ debhelper-compat (= 13),
+ dh-python,
+ python3-all,
+ python3-setuptools,
+ python3-docutils,
+ python3-sphinx,
+ python3-sphinxcontrib.plantuml,
+ sphinx-doc,
+ po4a,
+ imagemagick,
+ texlive,
+ texlive-lang-english,
+ texlive-lang-french,
+ texlive-lang-german,
+ texlive-latex-extra,
+ texlive-latex-recommended,
+ lmodern,
+ xvfb,
+ xauth,
+ python3-gi,
+ gir1.2-poppler-0.18,
+ python3-gi-cairo,
+ gir1.2-gtk-3.0,
+ gir1.2-notify-0.7,
+ gir1.2-libinsane-1.0,
+ gir1.2-handy-1,
+ python3-distro,
+ python3-pillow,
+ python3-pypillowfight,
+ python3-sklearn,
+ python3-pyocr,
+ python3-psutil,
+ python3-pycountry,
+ python3-whoosh,
+ python3-fabulous,
+ python3-levenshtein,
+ python3-pyxdg,
+ tesseract-ocr,
+ librsvg2-bin,
+Standards-Version: 4.6.2
+Homepage: https://openpaper.work
+Vcs-Browser: https://salsa.debian.org/openpaperwork-team/paperwork
+Vcs-Git: https://salsa.debian.org/openpaperwork-team/paperwork.git
+Rules-Requires-Root: no
 
-Package: template-repository
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Package: openpaperwork-core
+Architecture: all
+Multi-Arch: foreign
+Section: gnome
+Depends: ${python3:Depends}, ${misc:Depends}, gir1.2-gdkpixbuf-2.0, gir1.2-glib-2.0, gir1.2-pango-1.0, gir1.2-poppler-0.18
+Description: OpenPaperwork plugins manager - core plugins manager
+ The core manages Plugins, Callbacks and Interfaces. This package also provide
+ some basic plugins that may be used in any kind of application.
+ .
+ This package contains only core plugins. The GUI is included in paperwork-gtk
+ package.
+
+Package: openpaperwork-core-doc
+Architecture: all
+Multi-Arch: foreign
+Section: doc
+Depends: ${sphinxdoc:Depends}, ${misc:Depends}
+Description: OpenPaperwork plugins manager - core plugins manager documentation
+ The core manages Plugins, Callbacks and Interfaces. This package also provide
+ some basic plugins that may be used in any kind of application.
+ .
+ This package contains the documentation
+
+Package: openpaperwork-gtk
+Architecture: all
+Multi-Arch: foreign
+Section: gnome
+Depends: ${python3:Depends}, ${misc:Depends}, gir1.2-gdkpixbuf-2.0, gir1.2-gtk-3.0, gir1.2-handy-1, gir1.2-notify-0.7, gir1.2-pango-1.0
+Suggests: paperwork-gtk
+Description: OpenPaperwork Glib/GTK plugins manager
+ This package extends the openpaperwork-core with GLib/GTK plugins that may be
+ used in any GUI application.
+ .
+ This package contains only Glib/GTK plugins. The GUI is included in
+ paperwork-gtk package.
+
+Package: openpaperwork-gtk-doc
+Architecture: all
+Multi-Arch: foreign
+Section: doc
+Depends: ${sphinxdoc:Depends}, ${misc:Depends}
+Description: OpenPaperwork Glib/GTK plugins manager - documentation
+ This package extends the openpaperwork-core with GLib/GTK plugins that may be
+ used in any GUI application.
+ .
+ This package contains the documentation
+
+Package: paperwork-backend
+Architecture: all
+Multi-Arch: foreign
+Section: gnome
+Depends: ${python3:Depends}, ${misc:Depends}, openpaperwork-core (= ${binary:Version}), python3-gi, gir1.2-libinsane-1.0, python3-gi-cairo, python3-sklearn
+Suggests: paperwork-shell, paperwork-gtk, libreoffice
+Description: Personal document manager
+ This is the backend part of Paperwork. It manages: The work directory / Access
+ to the documents, Indexing, Searching, Suggestions, Import, Export.
+ .
+ Paperwork is a personal document manager. It manages scanned documents and
+ PDFs.
+ It's designed to be easy and fast to use. The idea behind Paperwork
+ is "scan & forget": You can just scan a new document and
+ forget about it until the day you need it again.
+ In other words, let the machine do most of the work for you.
+
+Package: paperwork-backend-doc
+Architecture: all
+Multi-Arch: foreign
+Section: doc
+Depends: ${sphinxdoc:Depends}, ${misc:Depends}
+Description: Paperwork is a personal document manager - backend documentation
+ This is the backend part of Paperwork. It manages: The work directory / Access
+ to the documents, Indexing, Searching, Suggestions, Import, Export.
+ .
+ Paperwork is a personal document manager. It manages scanned documents and
+ PDFs.
+ It's designed to be easy and fast to use. The idea behind Paperwork
+ is "scan & forget": You can just scan a new document and
+ forget about it until the day you need it again.
+ In other words, let the machine do most of the work for you.
+ .
+ This package contains the documentation
+
+Package: paperwork-gtk
+Architecture: all
+Multi-Arch: foreign
+Section: gnome
+Depends: ${python3:Depends}, ${misc:Depends}, openpaperwork-core (= ${binary:Version}), openpaperwork-gtk (= ${binary:Version}), paperwork-backend (= ${binary:Version}), adwaita-icon-theme | gnome-icon-theme-symbolic, gnome-icon-theme, tesseract-ocr | cuneiform, aspell
+Description: Paperwork is a personal document manager - GTK3 frontend
+ This is the GTK3 frontend part of Paperwork. It manages: The work directory /
+ Access to the documents, Indexing, Searching, Suggestions, Import, Export.
+ .
+ Paperwork is a personal document manager. It manages scanned documents and
+ PDFs.
+ It's designed to be easy and fast to use. The idea behind Paperwork
+ is "scan & forget": You can just scan a new document and
+ forget about it until the day you need it again.
+ In other words, let the machine do most of the work for you.
+ .
+ This package does not include localization files and dependencies. If you wish
+ to install paperwork in your language, check the corresponding
+ paperwork-gtk-l10n-* packages.
+
+Package: paperwork-shell
+Architecture: all
+Multi-Arch: foreign
+Section: utils
+Depends: ${python3:Depends}, ${misc:Depends}, openpaperwork-core (= ${binary:Version}), paperwork-backend (= ${binary:Version})
+Suggests: jq
+Description: Paperwork is a personal document manager - command line utils
+ Paperwork-shell provides 2 commands:
+ * paperwork-cli: Human-friendly command line interface. For instance, it
+   can be useful if you want to use Paperwork through SSH.
+ * paperwork-json: Designed to be used in scripts. Results can be parsed in
+   shell scripts using jq.
+
+Package: paperwork-gtk-l10n-en
+Architecture: all
+Multi-Arch: foreign
+Section: localization
+Depends: ${misc:Depends}, paperwork-gtk, tesseract-ocr-eng | cuneiform, aspell-en
+Description: Gui for paperwork-backend - English localization
+ This is the GTK3 frontend part of Paperwork. It manages: The work directory /
+ Access to the documents, Indexing, Searching, Suggestions, Import, Export.
+ .
+ Paperwork is a personal document manager. It manages scanned documents and
+ PDFs.
+ It's designed to be easy and fast to use. The idea behind Paperwork
+ is "scan & forget": You can just scan a new document and
+ forget about it until the day you need it again.
+ In other words, let the machine do most of the work for you.
+ .
+ This metapackage installs English localized dependencies.
+
+Package: paperwork-gtk-l10n-fr
+Architecture: all
+Multi-Arch: foreign
+Section: localization
+Depends: ${misc:Depends}, paperwork-gtk, tesseract-ocr-fra | cuneiform, aspell-fr
+Description: Gui for paperwork-backend - French localization
+ This is the GTK3 frontend part of Paperwork. It manages: The work directory /
+ Access to the documents, Indexing, Searching, Suggestions, Import, Export.
+ .
+ Paperwork is a personal document manager. It manages scanned documents and
+ PDFs.
+ It's designed to be easy and fast to use. The idea behind Paperwork
+ is "scan & forget": You can just scan a new document and
+ forget about it until the day you need it again.
+ In other words, let the machine do most of the work for you.
+ .
+ This package installs French localized dependencies.
+
+Package: paperwork-gtk-l10n-de
+Architecture: all
+Multi-Arch: foreign
+Section: localization
+Depends: ${misc:Depends}, paperwork-gtk, tesseract-ocr-deu | cuneiform, aspell-de | aspell-de-1901
+Description: Gui for paperwork-backend - German localization
+ This is the GTK3 frontend part of Paperwork. It manages: The work directory /
+ Access to the documents, Indexing, Searching, Suggestions, Import, Export.
+ .
+ Paperwork is a personal document manager. It manages scanned documents and
+ PDFs.
+ It's designed to be easy and fast to use. The idea behind Paperwork
+ is "scan & forget": You can just scan a new document and
+ forget about it until the day you need it again.
+ In other words, let the machine do most of the work for you.
+ .
+ This package installs German localized dependencies.
+
+Package: paperwork-gtk-l10n-uk
+Architecture: all
+Multi-Arch: foreign
+Section: localization
+Depends: ${misc:Depends}, paperwork-gtk, tesseract-ocr-ukr | cuneiform, aspell-uk
+Description: Gui for paperwork-backend - Ukrainian localization
+ This is the GTK3 frontend part of Paperwork. It manages: The work directory /
+ Access to the documents, Indexing, Searching, Suggestions, Import, Export.
+ .
+ Paperwork is a personal document manager. It manages scanned documents and
+ PDFs.
+ It's designed to be easy and fast to use. The idea behind Paperwork
+ is "scan & forget": You can just scan a new document and
+ forget about it until the day you need it again.
+ In other words, let the machine do most of the work for you.
+ .
+ This package installs Ukrainian localized dependencies.
+
+Package: paperwork-gtk-l10n-es
+Architecture: all
+Multi-Arch: foreign
+Section: localization
+Depends: ${misc:Depends}, paperwork-gtk, tesseract-ocr-spa | cuneiform, aspell-es
+Description: Gui for paperwork-backend - Spanish localization
+ This is the GTK3 frontend part of Paperwork. It manages: The work directory /
+ Access to the documents, Indexing, Searching, Suggestions, Import, Export.
+ .
+ Paperwork is a personal document manager. It manages scanned documents and
+ PDFs.
+ It's designed to be easy and fast to use. The idea behind Paperwork
+ is "scan & forget": You can just scan a new document and
+ forget about it until the day you need it again.
+ In other words, let the machine do most of the work for you.
+ .
+ This package installs Spanish localized dependencies.
+
+Package: paperwork-gtk-l10n-oc
+Architecture: all
+Multi-Arch: foreign
+Section: localization
+Depends: ${misc:Depends}, paperwork-gtk, tesseract-ocr-oci
+Description: Gui for paperwork-backend - Occitan localization
+ This is the GTK3 frontend part of Paperwork. It manages: The work directory /
+ Access to the documents, Indexing, Searching, Suggestions, Import, Export.
+ .
+ Paperwork is a personal document manager. It manages scanned documents and
+ PDFs.
+ It's designed to be easy and fast to use. The idea behind Paperwork
+ is "scan & forget": You can just scan a new document and
+ forget about it until the day you need it again.
+ In other words, let the machine do most of the work for you.
+ .
+ This package installs Occitan localized dependencies.

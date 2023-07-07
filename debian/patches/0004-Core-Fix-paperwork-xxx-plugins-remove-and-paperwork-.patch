@@ -1,0 +1,31 @@
+From: Jerome Flesch <jflesch@openpaper.work>
+Date: Sun, 15 Jan 2023 13:13:39 +0100
+Subject: Core: Fix 'paperwork-xxx plugins remove' and 'paperwork-xxx plugins
+ add' commands
+Origin: upstream, https://gitlab.gnome.org/World/OpenPaperwork/paperwork/-/commit/a4d7a9a48b3119bb62dc7e107036b734772ea60d
+
+---
+ .../src/openpaperwork_core/config/backend/configparser.py             | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/openpaperwork-core/src/openpaperwork_core/config/backend/configparser.py b/openpaperwork-core/src/openpaperwork_core/config/backend/configparser.py
+index 905a419..7ace854 100644
+--- a/openpaperwork-core/src/openpaperwork_core/config/backend/configparser.py
++++ b/openpaperwork-core/src/openpaperwork_core/config/backend/configparser.py
+@@ -280,14 +280,14 @@ class Plugin(PluginBase):
+     def config_backend_add_plugin(self, opt_name, module_name):
+         LOGGER.info("Adding plugin '%s' to configuration", module_name)
+         modules = self.config_backend_list_active_plugins(opt_name)
+-        modules.elements.append(module_name)
++        modules.append(module_name)
+         self.config_backend_put("plugins", opt_name, modules)
+ 
+     def config_backend_remove_plugin(self, opt_name, module_name):
+         LOGGER.info("Removing plugin '%s' from configuration", module_name)
+         modules = self.config_backend_list_active_plugins(opt_name)
+         try:
+-            modules.elements.remove(module_name)
++            modules.remove(module_name)
+         except ValueError:
+             LOGGER.warning("Plugin '%s' not found", module_name)
+         self.config_backend_put("plugins", opt_name, modules)

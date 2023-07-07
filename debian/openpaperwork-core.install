@@ -1,0 +1,7 @@
+usr/lib/python*/dist-packages/openpaperwork_core/*
+usr/lib/python*/dist-packages/openpaperwork_core*.egg-info
+openpaperwork-core/src/openpaperwork_core/l10n/out/de/LC_MESSAGES/openpaperwork_core.mo /usr/share/locale/de/LC_MESSAGES/
+openpaperwork-core/src/openpaperwork_core/l10n/out/es/LC_MESSAGES/openpaperwork_core.mo /usr/share/locale/es/LC_MESSAGES/
+openpaperwork-core/src/openpaperwork_core/l10n/out/fr/LC_MESSAGES/openpaperwork_core.mo /usr/share/locale/fr/LC_MESSAGES/
+openpaperwork-core/src/openpaperwork_core/l10n/out/oc/LC_MESSAGES/openpaperwork_core.mo /usr/share/locale/oc/LC_MESSAGES/
+openpaperwork-core/src/openpaperwork_core/l10n/out/uk/LC_MESSAGES/openpaperwork_core.mo /usr/share/locale/uk/LC_MESSAGES/

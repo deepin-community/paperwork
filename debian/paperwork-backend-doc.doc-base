@@ -1,0 +1,9 @@
+Document: paperwork-backend-doc
+Title: Documentation for paperwork backend
+Author: Jerome Flesch
+Abstract: Documentation for paperwork backend
+Section: Data Management
+
+Format: html
+Index: /usr/share/doc/paperwork-backend/index.html
+Files: /usr/share/doc/paperwork-backend/*.html

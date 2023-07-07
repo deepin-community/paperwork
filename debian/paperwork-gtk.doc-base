@@ -1,0 +1,8 @@
+Document: paperwork-gtk
+Title: Manual for paperwork GTK3 frontend
+Author: Jerome Flesch
+Abstract: Introduction to Paperwork and User Manual
+Section: Data Management
+
+Format: PDF
+Files: /usr/share/doc/paperwork-gtk/*.pdf

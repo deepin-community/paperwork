@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# Check that paperwork command line detects all dependencies
+# For that we need to enable the plugin that is disabled by Debian
+paperwork-json plugins add openpaperwork_core.cmd.chkdeps
+
+LANG=C paperwork-json chkdeps | jq -e '.missing == {}'
+if [[ "$?" -eq "0" ]]; then
+    echo "No missing dependencies"
+else
+    echo "Missing cli dependencies!"
+    paperwork-json chkdeps
+    exit 1
+fi
