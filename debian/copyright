@@ -1,13 +1,84 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: template-repository
-Source: https://github.com/deepin-community/template-repository
+Upstream-Name: paperwork
+Upstream-Contact: https://forum.openpaper.work
+Source: https://gitlab.gnome.org/World/OpenPaperwork/paperwork
 
 Files: *
-Copyright: 2023 Tsic404 <liuheng@deepin.org>
-License: GPL-2+
- This package is free software; you can redistribute it and/or modify
+Copyright: 2011-2021, Jerome Flesch <jflesch@openpaper.work>
+           2015-2021, Mathieu Jourdan <mathieu.jourdan@gresille.org>
+           2019-2021, Elliott Sales de Andrade <quantum.analyst@gmail.com>
+           2019, Jérémy BUCHOU <jeremy.buchou@gmail.com>
+           2019, François Boulogne <fboulogne@sciunto.org>
+           2018, toerb <toerbnator@jedirat.org>
+           2018, Balló György <ballogyor@gmail.com>
+           2018, Joshua Kramer <joskra42@gmail.com>
+           2018, Stéphane Brunner <stephane.brunner@camptocamp.com>
+           2018, Jonas Wloka <code@jowlo.de>
+           2018, Bastien Nocera <hadess@hadess.net>
+           2018, Justin P <Jpartain89@gmail.com>
+           2018, Johnny Stenback <github@jstenback.com>
+           2017, Matthieu Coudron <mattator@gmail.com>
+           2013-2017, Tristan Kohl <blobbyjj@ymail.com>
+           2017, Alexandre Vaissière <avaiss@fmiw.org>
+           2017, Mathieu Schopfer <mathieu.schopfer@protonmail.ch>
+           2017, Gautier Pelloux-Prayer <bagage@users.noreply.github.com>
+           2017, claudex <claude.xavier@gmail.com>
+           2017, Notkea <pacien@users.noreply.github.com>
+           2017, Daniel Korostil <ted.korostiled@gmail.com>
+           2017, foudfou <foudil.newbie+git@gmail.com>
+           2016, Davidbrcz <Davidbrcz@users.noreply.github.com>
+           2016, Christophe Delaere <christophe.delaere@cern.ch>
+           2016, Patrick Scheid <p.scheid92@gmail.com>
+           2016, Sébastien Maccagnoni <sebastien@maccagnoni.eu>
+           2016, Matthias Mailänder <Mailaender@users.noreply.github.com>
+           2016, Sebastian Spaeth <Sebastian@SSpaeth.de>
+           2016, Markus Mayr <markusmayr@gmx.net>
+           2016, Thomas Clavier <tom@tcweb.org>
+           2016, pingtux <pingtux@users.noreply.github.com>
+           2016, Alain <github@STudio26.no-ip.biz>
+           2016, Santiago Castro <bryant@montevideo.com.uy>
+           2016, Jehan <jehan@girinstud.io>
+           2016, Hannes <textPreferred@users.noreply.github.com>
+           2014-2015, Paul Liétar <paul@lietar.net>
+           2015, Christophe 'RTDaemons' GERARDIN <cgerardin@elitemail.org>
+           2014, lb1a <github@lb1a.de>
+           2014, Daniel Hahler <git@thequod.de>
+           2014, arthurlutz <arthur.lutz@gmail.com>
+           2014, Samuel Dorsaz <ajira86@hotmail.com>
+           2014, swap38 <swap38@no-log.org>
+           2014, Dominique Hazael-Massieux <dom@w3.org>
+           2014, Stefan Pokorny <stefan@stefanpokorny.de>
+           2013, Josselin Jacquard <josselin.jacquard@gmail.com>
+           2013, RyDroid <rydroid_dev@yahoo.com>
+           2013, François Schmidts <francois.schmidts@gmail.com>
+           2013, Bignaux Ronan <ronan@aimao.org>
+           2013, Krap <Krap@users.noreply.github.com>
+           2013, Glandos <bugs-github@antipoul.fr>
+           2013, ludo <ludo@zyrianes.net>
+           2013, Christophe Chauvet <christophe.chauvet@gmail.com>
+           2012, Sébastien Maccagnoni-Munch <sebastien@smm-informatique.fr>
+License: GPL-3.0+
+
+Files: paperwork-gtk/src/paperwork_gtk/data/work.openpaper.Paperwork.appdata.xml
+Copyright: 2018, Jerome Flesch <jflesch@openpaper.work>
+License: CC0-1.0
+
+Files: test-documents/*
+Copyright: 2021, Jerome Flesch <jflesch@openpaper.work>
+License: GPL-3.0+
+
+Files: debian/*
+Copyright: 2019-2021, Thomas Perret <thomas.perret@phyx.fr>
+License: GPL-3.0+
+
+License: CC0-1.0
+ On Debian systems the full text of the CC0-1.0 license can be found in
+ /usr/share/common-licenses/CC0-1.0
+
+License: GPL-3.0+
+ This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 2 of the License, or
+ the Free Software Foundation, either version 3 of the License, or
  (at your option) any later version.
  .
  This package is distributed in the hope that it will be useful,
@@ -16,7 +87,7 @@ License: GPL-2+
  GNU General Public License for more details.
  .
  You should have received a copy of the GNU General Public License
- along with this program. If not, see <https://www.gnu.org/licenses/>
+ along with this program. If not, see <https://www.gnu.org/licenses/>.
  .
  On Debian systems, the complete text of the GNU General
- Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".
+ Public License version 3 can be found in "/usr/share/common-licenses/GPL-3".

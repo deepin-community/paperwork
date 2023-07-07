@@ -1,0 +1,7 @@
+usr/lib/python*/dist-packages/openpaperwork_gtk/*
+usr/lib/python*/dist-packages/openpaperwork_gtk*.egg-info
+openpaperwork-gtk/src/openpaperwork_gtk/l10n/out/de/LC_MESSAGES/openpaperwork_gtk.mo /usr/share/locale/de/LC_MESSAGES/
+openpaperwork-gtk/src/openpaperwork_gtk/l10n/out/es/LC_MESSAGES/openpaperwork_gtk.mo /usr/share/locale/es/LC_MESSAGES/
+openpaperwork-gtk/src/openpaperwork_gtk/l10n/out/fr/LC_MESSAGES/openpaperwork_gtk.mo /usr/share/locale/fr/LC_MESSAGES/
+openpaperwork-gtk/src/openpaperwork_gtk/l10n/out/oc/LC_MESSAGES/openpaperwork_gtk.mo /usr/share/locale/oc/LC_MESSAGES/
+openpaperwork-gtk/src/openpaperwork_gtk/l10n/out/uk/LC_MESSAGES/openpaperwork_gtk.mo /usr/share/locale/uk/LC_MESSAGES/

@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# run paperwork-cli one time to generate configuration files
+paperwork-cli
+
+# Check that command 'chkdeps' cannot be run
+paperwork-cli --help | grep -q chkdeps
+if [[ "$?" -eq "0" ]]; then
+	echo "cli chkdeps command is enabled!"
+	exit 1
+fi
+paperwork-gtk --help | grep -q chkdeps
+if [[ "$?" -eq "0" ]]; then
+	echo "gtk chkdeps command is enabled!"
+	exit 1
+fi
+
+# check that command install is not available
+paperwork-gtk --help | grep -q install
+if [[ "$?" -eq "0" ]]; then
+	echo "gtk install command is enabled!"
+	exit 1
+fi

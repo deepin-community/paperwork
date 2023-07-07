@@ -1,5 +1,136 @@
-template-repository (1.0-1) unstable; urgency=medium
+paperwork (2.1.2-1) unstable; urgency=medium
 
-  * Initial release
+  * New upstream version 2.1.2
+  * debian/patches: cherry-pick upstream commit to fix plugin adding/removing
+  * Bumps Standards-Version to 4.6.2 (no changes needed)
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Thomas Perret <thomas.perret@phyx.fr>  Sat, 04 Mar 2023 00:32:12 +0100
+
+paperwork (2.1.1-1) unstable; urgency=medium
+
+  * New upstream version 2.1.1
+  * debian/control: Remove python3-dateutil from Build-Depends
+  * debian/patches: drop patch for scikit-learn requirement removal
+    (see #1001578)
+
+ -- Thomas Perret <thomas.perret@phyx.fr>  Wed, 23 Feb 2022 23:15:01 +0100
+
+paperwork (2.1.0-2) unstable; urgency=medium
+
+  * debian/patches: Re-disable chkdeps plugins (previous patch refresh failed
+    to include that part)
+  * debian/tests: Be more verbose about which package dependency is missing
+  * debian/{control,tests}: Add libreoffice as Suggests
+
+ -- Thomas Perret <thomas.perret@phyx.fr>  Thu, 16 Dec 2021 23:14:42 +0100
+
+paperwork (2.1.0-1) unstable; urgency=medium
+
+  * New upstream version 2.1.0
+  * debian/control:
+    + Remove :any M-A qualifier from python3-all Build-Depends
+    + Update build dependencies
+    + Move dependencies to correct binary packages
+    + Add python3-sklearn to Build-Depends
+  * debian/watch: Update watch file for next upstream release
+  * debian/patches:
+    + Refresh patches for new upstream release
+    + Reformat patches metadata
+    + Remove scikit-learn from paperwork-backend requirements
+      to workaround #1001578
+  * debian/copyright: update years and add component license
+  * debian/tests: remove workaround for ARM 32bits tests
+
+ -- Thomas Perret <thomas.perret@phyx.fr>  Mon, 13 Dec 2021 23:57:06 +0100
+
+paperwork (2.0.3-3) unstable; urgency=medium
+
+  * Add Multi-Arch indications
+  * Re-enable html documentation builds
+
+ -- Thomas Perret <thomas.perret@phyx.fr>  Sun, 31 Oct 2021 13:27:51 +0100
+
+paperwork (2.0.3-2) unstable; urgency=medium
+
+  * Disable html documentation builds (see #995365)
+  * Specify python3-all arch in Build-Depends to make lintian happy
+  * Disable libinsane workaround for autopkgtests (fix #983515)
+
+ -- Thomas Perret <thomas.perret@phyx.fr>  Mon, 11 Oct 2021 19:27:18 +0200
+
+paperwork (2.0.3-1) unstable; urgency=medium
+
+  * New upstream version 2.0.3
+  * debian/watch: Use source documents to build documentation from source
+  * Build documentation PDFs from source
+  * debian/control: Bump Standards-Version to 4.6.0.1 (no changes needed)
+
+ -- Thomas Perret <thomas.perret@phyx.fr>  Wed, 29 Sep 2021 18:04:02 +0200
+
+paperwork (2.0.2-3) unstable; urgency=medium
+
+  * Source only upload, no changes
+
+ -- Thomas Perret <thomas.perret@phyx.fr>  Sun, 21 Feb 2021 18:22:41 +0100
+
+paperwork (2.0.2-2) unstable; urgency=medium
+
+  * Improve packages descriptions
+  * Suggests GUI packages in core and backend packages
+
+ -- Thomas Perret <thomas.perret@phyx.fr>  Sun, 14 Feb 2021 12:14:57 +0100
+
+paperwork (2.0.2-1) unstable; urgency=medium
+
+  * debian/watch: prepare for new upstream version 2.0.2
+  * New upstream version 2.0.2 (Closes: #973349)
+  * Update desktop entry file to manage imports from files directly
+  * debian/patches: refresh patches for new upstream version
+
+ -- Thomas Perret <thomas.perret@phyx.fr>  Wed, 06 Jan 2021 22:27:31 +0100
+
+paperwork (2.0.1-1) unstable; urgency=medium
+
+  * New upstream version 2.0.1
+  * debian/control: Add new packages and dependencies
+  * debian/patches: refresh patch for 2.0.1 release
+  * debian/tests: rewrite tests and add upstream unittests as DEP-8
+  * debian/README.source: Document MUT package status
+  * debian/copyright: Update copyright infos
+  * debian/gbp.conf: Always use pristine-tar with gbp
+  * debian/control: Bump Standards-Version to 4.5.1 (no changes needed)
+
+ -- Thomas Perret <thomas.perret@phyx.fr>  Sun, 27 Dec 2020 12:46:02 +0100
+
+paperwork (1.3.1-3) unstable; urgency=medium
+
+  * debian/control:
+    - Fix localization language pachages descriptions (Closes: #966682,
+      #966683). Thanks @Alessandro Gandelli
+    - Bump debhelper compat version
+
+ -- Thomas Perret <thomas.perret@phyx.fr>  Tue, 11 Aug 2020 22:40:18 +0200
+
+paperwork (1.3.1-2) unstable; urgency=medium
+
+  * Remove debian packaging author
+  * debian/control: Bump Standards-Version to 4.5.0 (no changes needed)
+  * Source only upload (Closes: #951633)
+
+ -- Thomas Perret <thomas.perret@phyx.fr>  Wed, 19 Feb 2020 19:47:54 +0100
+
+paperwork (1.3.1-1) unstable; urgency=medium
+
+  * New upstream version 1.3.1
+  * debian/patches: add missing upstream changelog entries about 1.3.1
+  * debian: Add upstream changelogs to packages docs
+  * debian/control: add spanish translation package
+  * debian/copyright: set forum url as upstream contact
+
+ -- Thomas Perret <thomas.perret@phyx.fr>  Sat, 28 Dec 2019 20:29:17 +0100
+
+paperwork (1.3.0-1) unstable; urgency=medium
+
+  * Initial release (Closes: #721287)
+
+ -- Thomas Perret <thomas.perret@phyx.fr>  Thu, 19 Dec 2019 13:02:45 +0100

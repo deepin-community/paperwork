@@ -1,4 +1,87 @@
 #!/usr/bin/make -f
+# See debhelper(7) (uncomment to enable)
+# output every command that modifies files on the build system.
+export DH_VERBOSE = 1
+
+include /usr/share/dpkg/pkg-info.mk
+
+export PYBUILD_VERBOSE=1
+
+
+paperwork-backend/src/paperwork_backend/_version.py: debian/_version.py.in
+	sed 's,@DEB_VERSION_UPSTREAM@,$(DEB_VERSION_UPSTREAM),g' $< > $@
+
+paperwork-gtk/src/paperwork_gtk/_version.py: debian/_version.py.in
+	echo >> $@
+	sed 's,@DEB_VERSION_UPSTREAM@,$(DEB_VERSION_UPSTREAM),g' $< >> $@
+
+openpaperwork-core/src/openpaperwork_core/_version.py: debian/_version.py.in
+	sed 's,@DEB_VERSION_UPSTREAM@,$(DEB_VERSION_UPSTREAM),g' $< > $@
+
+openpaperwork-gtk/src/openpaperwork_gtk/_version.py: debian/_version.py.in
+	sed 's,@DEB_VERSION_UPSTREAM@,$(DEB_VERSION_UPSTREAM),g' $< > $@
+	
+paperwork-shell/src/paperwork_shell/_version.py: debian/_version.py.in
+	sed 's,@DEB_VERSION_UPSTREAM@,$(DEB_VERSION_UPSTREAM),g' $< > $@
+
 
 %:
-	dh $@
+	dh $@ --with python3,sphinxdoc --buildsystem=pybuild
+
+override_dh_auto_clean: paperwork-backend/src/paperwork_backend/_version.py paperwork-gtk/src/paperwork_gtk/_version.py openpaperwork-core/src/openpaperwork_core/_version.py openpaperwork-gtk/src/openpaperwork_gtk/_version.py paperwork-shell/src/paperwork_shell/_version.py
+	dh_auto_clean -D openpaperwork-core --buildsystem=pybuild
+	dh_auto_clean -D openpaperwork-gtk --buildsystem=pybuild
+	dh_auto_clean -D paperwork-gtk --buildsystem=pybuild
+	dh_auto_clean -D paperwork-backend --buildsystem=pybuild
+	dh_auto_clean -D paperwork-shell --buildsystem=pybuild
+	$(RM) openpaperwork-core/src/openpaperwork_core/_version.py
+	$(RM) openpaperwork-gtk/src/openpaperwork_gtk/_version.py
+	$(RM) paperwork-backend/src/paperwork_backend/_version.py
+	$(RM) paperwork-gtk/src/paperwork_gtk/_version.py
+	$(RM) paperwork-shell/src/paperwork_shell/_version.py
+	$(RM) debian/paperwork-gtk.1
+	$(RM) debian/paperwork-cli.1
+	$(RM) debian/paperwork-json.1
+
+override_dh_auto_configure: paperwork-backend/src/paperwork_backend/_version.py paperwork-gtk/src/paperwork_gtk/_version.py openpaperwork-core/src/openpaperwork_core/_version.py openpaperwork-gtk/src/openpaperwork_gtk/_version.py paperwork-shell/src/paperwork_shell/_version.py
+	dh_auto_configure -D openpaperwork-core --buildsystem=pybuild
+	dh_auto_configure -D openpaperwork-gtk --buildsystem=pybuild
+	dh_auto_configure -D paperwork-gtk --buildsystem=pybuild
+	dh_auto_configure -D paperwork-backend --buildsystem=pybuild
+	dh_auto_configure -D paperwork-shell --buildsystem=pybuild
+
+override_dh_auto_build:
+	dh_auto_build -D openpaperwork-core --buildsystem=pybuild
+	PYTHONPATH=openpaperwork-core/src python3 -m sphinx -N -bhtml openpaperwork-core/doc build/openpaperwork_core/html
+	dh_auto_build -D openpaperwork-gtk --buildsystem=pybuild
+	PYTHONPATH=openpaperwork-gtk/src python3 -m sphinx -N -bhtml openpaperwork-gtk/doc build/openpaperwork_gtk/html
+	dh_auto_build -D paperwork-gtk --buildsystem=pybuild
+	dh_auto_build -D paperwork-backend --buildsystem=pybuild
+	PYTHONPATH=paperwork-backend/src python3 -m sphinx -N -bhtml paperwork-backend/doc build/paperwork_backend/html
+	dh_auto_build -D paperwork-shell --buildsystem=pybuild
+	rst2man debian/paperwork-gtk.rst debian/paperwork-gtk.1
+	rst2man debian/paperwork-cli.rst debian/paperwork-cli.1
+	rst2man debian/paperwork-json.rst debian/paperwork-json.1
+	make l10n_compile
+
+override_dh_auto_install:
+	mkdir -p debian/tmp
+	make -C paperwork-backend data
+	make -C paperwork-gtk/src/paperwork_gtk/icon data
+	dh_auto_install -D openpaperwork-core --buildsystem=pybuild
+	dh_auto_install -D openpaperwork-gtk --buildsystem=pybuild
+	dh_auto_install -D paperwork-gtk --buildsystem=pybuild
+	dh_auto_install -D paperwork-backend --buildsystem=pybuild
+	dh_auto_install -D paperwork-shell --buildsystem=pybuild
+	PYTHONPATH="$(CURDIR)/debian/tmp/usr/lib/$(shell py3versions -d)/dist-packages/" PAPERWORK_TEST_DOCUMENTS="$(CURDIR)/test-documents/" PATH="$(CURDIR)/debian/tmp/usr/bin:$(PATH)" make -C paperwork-gtk/src/paperwork_gtk/model/help data
+	mkdir -p debian/tmp/usr/share
+	mkdir -p debian/tmp/paperwork-home/config
+	PYTHONPATH="$(CURDIR)/debian/tmp/usr/lib/$(shell py3versions -d)/dist-packages/" PATH="$(CURDIR)/debian/tmp/usr/bin:$(PATH)" XDG_DATA_HOME="$(CURDIR)/debian/tmp/usr/share" XDG_CONFIG_HOME="$(CURDIR)/debian/tmp/paperwork-home/config" paperwork-gtk plugins add paperwork_gtk.cmd.install
+	PYTHONPATH="$(CURDIR)/debian/tmp/usr/lib/$(shell py3versions -d)/dist-packages/" PATH="$(CURDIR)/debian/tmp/usr/bin:$(PATH)" XDG_DATA_HOME="$(CURDIR)/debian/tmp/usr/share" XDG_CONFIG_HOME="$(CURDIR)/debian/tmp/paperwork-home/config" paperwork-gtk install --user
+	$(RM) -r debian/tmp/usr/share/paperwork2
+	$(RM) -r debian/tmp/paperwork-home
+
+override_dh_auto_test:
+
+override_dh_compress:
+	dh_compress -X.pdf

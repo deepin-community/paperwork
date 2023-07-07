@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+
+set -e 
+
+for package in openpaperwork-core openpaperwork-gtk paperwork-backend paperwork-gtk paperwork-shell; do
+    mkdir -p $AUTOPKGTEST_TMP/"$package"
+    cp -r "$package"/tests $AUTOPKGTEST_TMP/"$package"
+done
+
+cd $AUTOPKGTEST_TMP
+for package in openpaperwork-core openpaperwork-gtk paperwork-backend paperwork-gtk paperwork-shell; do
+    cd $package
+    python3 -m unittest discover --verbose -s tests
+    cd ..
+done

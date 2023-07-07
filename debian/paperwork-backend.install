@@ -1,0 +1,6 @@
+usr/lib/python*/dist-packages/paperwork_backend*
+paperwork-backend/src/paperwork_backend/l10n/out/de/LC_MESSAGES/paperwork_backend.mo /usr/share/locale/de/LC_MESSAGES/
+paperwork-backend/src/paperwork_backend/l10n/out/es/LC_MESSAGES/paperwork_backend.mo /usr/share/locale/es/LC_MESSAGES/
+paperwork-backend/src/paperwork_backend/l10n/out/fr/LC_MESSAGES/paperwork_backend.mo /usr/share/locale/fr/LC_MESSAGES/
+paperwork-backend/src/paperwork_backend/l10n/out/oc/LC_MESSAGES/paperwork_backend.mo /usr/share/locale/oc/LC_MESSAGES/
+paperwork-backend/src/paperwork_backend/l10n/out/uk/LC_MESSAGES/paperwork_backend.mo /usr/share/locale/uk/LC_MESSAGES/

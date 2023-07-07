@@ -1,0 +1,7 @@
+usr/bin/paperwork-gtk
+usr/lib/python*/dist-packages/paperwork_gtk/*
+usr/lib/python*/dist-packages/paperwork-*.egg-info
+usr/share/icons/hicolor/scalable/apps/*
+usr/share/applications/work.openpaper.Paperwork.desktop
+usr/share/icons/hicolor/*/apps/work.openpaper.Paperwork.png
+usr/share/metainfo/work.openpaper.Paperwork.appdata.xml

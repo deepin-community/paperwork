@@ -1,0 +1,16 @@
+Tests: dangerous-plugins-disabled
+Depends: @
+Restrictions: allow-stderr
+
+Tests: unittests
+Depends: @, python3-psutil, libreoffice
+Restrictions: allow-stderr
+
+Tests: check-deps
+Depends: @, jq, libreoffice
+Restrictions: allow-stderr
+
+Test-Command: /usr/bin/paperwork-gtk --help
+Depends: paperwork-gtk
+Restrictions: superficial, allow-stderr
+Features: test-name=paperwork

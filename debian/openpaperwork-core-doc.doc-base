@@ -1,0 +1,9 @@
+Document: openpaperwork-core-doc
+Title: Documentation for openpaperwork-core
+Author: Jerome Flesch
+Abstract: Developer documentation
+Section: Data Management
+
+Format: html
+Index: /usr/share/doc/openpaperwork-core/index.html
+Files: /usr/share/doc/openpaperwork-core/*.html

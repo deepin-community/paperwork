@@ -1,0 +1,10 @@
+usr/bin/paperwork-cli
+usr/bin/paperwork-json
+usr/lib/python*/dist-packages/paperwork_shell/*
+usr/lib/python*/dist-packages/paperwork_shell*.egg-info
+paperwork-shell/src/paperwork_shell/cmd/about/logo.png /usr/share/paperwork/paperwork_shell/cmd/about/
+paperwork-shell/src/paperwork_shell/l10n/out/de/LC_MESSAGES/paperwork_shell.mo /usr/share/locale/de/LC_MESSAGES/
+paperwork-shell/src/paperwork_shell/l10n/out/es/LC_MESSAGES/paperwork_shell.mo /usr/share/locale/es/LC_MESSAGES/
+paperwork-shell/src/paperwork_shell/l10n/out/fr/LC_MESSAGES/paperwork_shell.mo /usr/share/locale/fr/LC_MESSAGES/
+paperwork-shell/src/paperwork_shell/l10n/out/oc/LC_MESSAGES/paperwork_shell.mo /usr/share/locale/oc/LC_MESSAGES/
+paperwork-shell/src/paperwork_shell/l10n/out/uk/LC_MESSAGES/paperwork_shell.mo /usr/share/locale/uk/LC_MESSAGES/

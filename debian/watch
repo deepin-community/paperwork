@@ -1,0 +1,5 @@
+version=4
+opts=filenamemangle=s/.*\/archive\/(\d\S+)\/paperwork.*\.tar\.gz/paperwork-$1\.tar\.gz/g,uversionmangle=s/\.post/post/ \
+  https://gitlab.gnome.org/World/OpenPaperWork/paperwork/tags?sort=updated_desc .*/archive/(\d\S+)/.*\.tar\.gz.*
+opts=component=test-documents,filenamemangle=s/.*\/archive\/(\d\S+)\/paperwork-test-documents.*\.tar\.gz/paperwork-test-documents-$1\.tar\.gz/g \
+  https://gitlab.gnome.org/World/OpenPaperWork/paperwork-test-documents/tags?sort=updated_desc&search=^2.1 .*/archive/(\d\S+)/.*\.tar\.gz.* ignore uupdate
